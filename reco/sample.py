@@ -308,6 +308,8 @@ class SingleSample(Sample):
             seed_length=Config.BOWTIE2_SEED_LENGTH,
             seed_mismatch=Config.BOWTIE2_SEED_MISMATCH,
             interval_function=Config.BOWTIE2_INTERVAL_FUNCTION,
+            max_mismatch=Config.BOWTIE2_MAX_MISMATCH,
+            seq_length=self.lib.sequence_length,
             bowtie2_index=self.bowtie2_index,
             final_trimmed_file=self.final_trimmed_file,
             sam_file=self.sam_file,
