@@ -22,6 +22,7 @@ class Config:  # pylint: disable=too-few-public-methods
 
     BOWTIE2_SEED_LENGTH = 12
     BOWTIE2_SEED_MISMATCH = 1
+    BOWTIE2_MAX_MISMATCH = 0
     BOWTIE2_INTERVAL_FUNCTION = "S,1.0,0.75"
 
     CUTADAPT_PAIR_FILTER = "any"
