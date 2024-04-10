@@ -37,6 +37,8 @@ class Bowtie2Aligner:
         seed_length=Config.BOWTIE2_SEED_LENGTH,
         seed_mismatch=Config.BOWTIE2_SEED_MISMATCH,
         interval_function=Config.BOWTIE2_INTERVAL_FUNCTION,
+        max_mismatch=Config.BOWTIE2_MAX_MISMATCH,
+        seq_length=Config.CUTADAPT_SEQUENCE_LENGTH,
         bowtie2_index=None,
         final_trimmed_file=None,
         sam_file=None,
@@ -44,10 +46,15 @@ class Bowtie2Aligner:
         self.logger = logger
         self.final_fastq = final_trimmed_file
 
+        min_align_score = (2 * seq_length) - (max_mismatch * 6)
+        score_min_params = "C," + str(min_align_score)
+
         self.command = [
             "bowtie2",
             "--local",
             "--norc",
+            "--score-min",
+            score_min_params,
             "-L",
             str(seed_length),
             "-N",
