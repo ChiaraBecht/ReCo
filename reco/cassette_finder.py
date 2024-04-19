@@ -229,8 +229,14 @@ class CassetteFinder:
         )
 
         if forward_matches == 0 and reverse_matches == 0:
+            self.logger.info(
+            f"0 forward and reverse matches"
+        )
             return {"lib_dir": None, "homology": None}
         elif forward_matches > reverse_matches:
+            self.logger.info(
+            f"more forward than reverse matches"
+        )
             # direction is forward
             if (
                 forward_homologies_5.most_common()[1][1]
@@ -249,12 +255,14 @@ class CassetteFinder:
                 "homology": forward_homologies_5.most_common(1)[0][0],
             }
         elif forward_matches == reverse_matches:
-            print("same abundance of forward and reverse matches")
             self.logger.info(
             f"same abundance of forward and reverse matches: {forward_homologies_5.most_common()}"
         )
             return {"lib_dir": "forward", "homology": forward_homologies_5.most_common(0)}
         else:
+            self.logger.info(
+            f"more reverse than forward"
+        )
             # direction is reverse
             if (
                 reverse_homologies_5.most_common()[1][1]
