@@ -29,6 +29,7 @@ class CassetteFinder:
         fastq_file=None,
         h5_length=Config.HOMOLOGY_5_LENGTH,
         h3_length=Config.HOMOLOGY_3_LENGTH,
+        h5_homology=Config.HOMOLOGY_5
     ):
         self.logger = logger
         self.library = library
@@ -47,6 +48,7 @@ class CassetteFinder:
         fastq_file=None,
         h5_length=Config.HOMOLOGY_5_LENGTH,
         h3_length=Config.HOMOLOGY_3_LENGTH,
+        h5_homology=Config.HOMOLOGY_5,
         guides_to_test_percent=Config.GUIDES_TO_TEST_PERCENT,
         reads_to_test=Config.READS_TO_TEST,
     ):
@@ -246,6 +248,8 @@ class CassetteFinder:
                 "lib_dir": "forward",
                 "homology": forward_homologies_5.most_common(1)[0][0],
             }
+        elif forward_matches == reverse_matches:
+            return {"lib_dir": "forward", "homology": forward_homologies_5.most_common(0)}
         else:
             # direction is reverse
             if (
