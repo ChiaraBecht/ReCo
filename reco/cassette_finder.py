@@ -250,6 +250,9 @@ class CassetteFinder:
             }
         elif forward_matches == reverse_matches:
             print("same abundance of forward and reverse matches")
+            self.logger.info(
+            f"same abundance of forward and reverse matches: {forward_homologies_5.most_common()}"
+        )
             return {"lib_dir": "forward", "homology": forward_homologies_5.most_common(0)}
         else:
             # direction is reverse
