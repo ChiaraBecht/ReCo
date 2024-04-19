@@ -34,6 +34,7 @@ class Config:  # pylint: disable=too-few-public-methods
 
     HOMOLOGY_5_LENGTH = 12
     HOMOLOGY_3_LENGTH = 12
+    HOMOLOGY_5 = "TTGGGTACCTCG"
 
     HOMOLOGY_ABUNDANCE_DIFFERENCE_PERCENT = 50
 
