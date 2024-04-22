@@ -238,7 +238,8 @@ class CassetteFinder:
             f"more forward than reverse matches"
         )
             self.logger.info("MOST COMMON FORWARD HOMOLOGIES:")
-            self.logger.info("length of homology list", len(forward_homologies_5.most_common(10)))
+            list_len = len(forward_homologies_5.most_common(10))
+            self.logger.info("length of homology list", list_len)
             self.logger.info(forward_homologies_5.most_common()[0][1])
             # direction is forward
             if (
