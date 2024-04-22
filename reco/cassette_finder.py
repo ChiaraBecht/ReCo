@@ -242,6 +242,12 @@ class CassetteFinder:
             self.logger.info(f"length of homology list {list_len}")
             self.logger.info(forward_homologies_5.most_common()[0][1])
             # direction is forward
+            if len(forward_homologies_5.most_common(10)) == 1:
+                self.logger.infor("one single homology found")
+                return {
+                    "lib_dir": "forward",
+                    "homology": forward_homologies_5.most_common(1)[0][0]
+                }
             if (
                 forward_homologies_5.most_common()[1][1]
                 >= (forward_homologies_5.most_common()[0][1] / 100.0)
