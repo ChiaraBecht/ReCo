@@ -237,7 +237,8 @@ class CassetteFinder:
             self.logger.info(
             f"more forward than reverse matches"
         )
-            print("MOST COMMON FORWARD HOMOLOGIES:", forward_homologies_5.most_common())
+            self.logger.info("MOST COMMON FORWARD HOMOLOGIES:")
+            self.logger.info(forward_homologies_5.most_common())
             # direction is forward
             if (
                 forward_homologies_5.most_common()[1][1]
