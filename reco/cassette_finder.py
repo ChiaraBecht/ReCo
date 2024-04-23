@@ -28,8 +28,7 @@ class CassetteFinder:
         library=None,
         fastq_file=None,
         h5_length=Config.HOMOLOGY_5_LENGTH,
-        h3_length=Config.HOMOLOGY_3_LENGTH,
-        h5_homology=Config.HOMOLOGY_5
+        h3_length=Config.HOMOLOGY_3_LENGTH
     ):
         self.logger = logger
         self.library = library
@@ -48,7 +47,6 @@ class CassetteFinder:
         fastq_file=None,
         h5_length=Config.HOMOLOGY_5_LENGTH,
         h3_length=Config.HOMOLOGY_3_LENGTH,
-        h5_homology=Config.HOMOLOGY_5,
         guides_to_test_percent=Config.GUIDES_TO_TEST_PERCENT,
         reads_to_test=Config.READS_TO_TEST,
     ):
@@ -232,7 +230,8 @@ class CassetteFinder:
             self.logger.info(
             f"0 forward and reverse matches"
         )
-            return {"lib_dir": None, "homology": None}
+            return {"lib_dir": None#, "homology": None
+                    }
         elif forward_matches > reverse_matches:
             self.logger.info(
             f"more forward than reverse matches"
@@ -246,7 +245,7 @@ class CassetteFinder:
                 self.logger.info("one single homology found")
                 return {
                     "lib_dir": "forward",
-                    "homology": forward_homologies_5.most_common(1)[0][0]
+                    #"homology": forward_homologies_5.most_common(1)[0][0]
                 }
             if (
                 forward_homologies_5.most_common()[1][1]
@@ -262,13 +261,14 @@ class CassetteFinder:
                 self.warnings.append(f" => {str(forward_homologies_5.most_common(5))}")
             return {
                 "lib_dir": "forward",
-                "homology": forward_homologies_5.most_common(1)[0][0],
+                #"homology": forward_homologies_5.most_common(1)[0][0],
             }
         elif forward_matches == reverse_matches:
             self.logger.info(
             f"same abundance of forward and reverse matches: {forward_homologies_5.most_common()}"
         )
-            return {"lib_dir": "forward", "homology": forward_homologies_5.most_common(0)}
+            return {"lib_dir": "forward"#, "homology": forward_homologies_5.most_common(0)
+                    }
         else:
             self.logger.info(
             f"more reverse than forward"
@@ -288,7 +288,7 @@ class CassetteFinder:
                 self.warnings.append(f" => {str(reverse_homologies_5.most_common(5))}")
             return {
                 "lib_dir": "reverse",
-                "homology": reverse_homologies_5.most_common(1)[0][0],
+                #"homology": reverse_homologies_5.most_common(1)[0][0],
             }
 
     def __repr__(self):
