@@ -564,7 +564,7 @@ class PairedSample(Sample):
         )
         if (
             self.cassette_information_1["lib_dir"] is None
-            and self.cassette_information_1["homology"] is None
+            #and self.cassette_information_1["homology"] is None
         ):
             self.logger.error(
                 "No gRNAs found in R1! Are you using the correct library?"
@@ -575,7 +575,7 @@ class PairedSample(Sample):
             return "No gRNAs found in R1! Are you using the correct library?"
         if (
             self.cassette_information_2["lib_dir"] is None
-            and self.cassette_information_2["homology"] is None
+            #and self.cassette_information_2["homology"] is None
         ):
             self.logger.error(
                 "No gRNAs found in R2! Are you using the correct library?"
@@ -593,7 +593,7 @@ class PairedSample(Sample):
         if self.vector:
             self.template_information_1 = self.vector.find_template(
                 template_length=self.lib_1.sequence_length,
-                prefix=self.cassette_information_1["homology"],
+                prefix=Config.HOMOLOGY_5, #self.cassette_information_1["homology"],
             )
             self.logger.info("Template 1: %s", self.template_information_1)
             self.lib_1.add_guide(
@@ -603,7 +603,7 @@ class PairedSample(Sample):
 
             self.template_information_2 = self.vector.find_template(
                 template_length=self.lib_2.sequence_length,
-                prefix=self.cassette_information_2["homology"],
+                prefix=Config.HOMOLOGY_5 #self.cassette_information_2["homology"],
             )
             self.logger.info("Template 2: %s", self.template_information_2)
             self.lib_2.add_guide(
@@ -632,8 +632,8 @@ class PairedSample(Sample):
             pair_filter=Config.CUTADAPT_PAIR_FILTER,
             sequence_length_1=self.lib_1.sequence_length,
             sequence_length_2=self.lib_2.sequence_length,
-            homology_1=self.cassette_information_1["homology"],
-            homology_2=self.cassette_information_2["homology"],
+            homology_1=Config.HOMOLOGY_5,#self.cassette_information_1["homology"],
+            homology_2=Config.HOMOLOGY_5,#self.cassette_information_2["homology"],
             output_file_1=cutadapt_output_file_1,
             output_file_2=cutadapt_output_file_2,
             fastq_file_1=self.fastq_file_1,
