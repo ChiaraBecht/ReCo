@@ -274,18 +274,18 @@ class CassetteFinder:
             f"more reverse than forward"
         )
             # direction is reverse
-            if (
-                reverse_homologies_5.most_common()[1][1]
-                >= (reverse_homologies_5.most_common()[0][1] / 100.0)
-                * Config.HOMOLOGY_ABUNDANCE_DIFFERENCE_PERCENT
-            ):
-                self.logger.warning(
-                    " => More than one reverse homology found, sample mix-up or mislabeling?"
-                )
-                self.warnings.append(
-                    "More than one reverse homology found, sample mix-up or mislabeling?"
-                )
-                self.warnings.append(f" => {str(reverse_homologies_5.most_common(5))}")
+            #if (
+            #    reverse_homologies_5.most_common()[1][1]
+            #    >= (reverse_homologies_5.most_common()[0][1] / 100.0)
+            #    * Config.HOMOLOGY_ABUNDANCE_DIFFERENCE_PERCENT
+            #):
+            #    self.logger.warning(
+            #        " => More than one reverse homology found, sample mix-up or mislabeling?"
+            #    )
+            #    self.warnings.append(
+            #        "More than one reverse homology found, sample mix-up or mislabeling?"
+            #    )
+            #    self.warnings.append(f" => {str(reverse_homologies_5.most_common(5))}")
             return {
                 "lib_dir": "reverse",
                 #"homology": reverse_homologies_5.most_common(1)[0][0],
