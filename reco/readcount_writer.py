@@ -169,7 +169,7 @@ def test_alignment(alignment):
 
     if alignment.has_tag("AS"):
         as_tag = alignment.get_tag("AS")
-        if as_tag >= 2 * len(sequence):  # max possible alignment score
+        if as_tag >= 2 * len(sequence) - 2:  # max possible alignment score -2 to allow a shorter sequence to be matched (allow softclipping of 1 base)
             if alignment.has_tag("XS"):
                 xs_tag = alignment.get_tag("XS")
                 if xs_tag <= as_tag - 2:
